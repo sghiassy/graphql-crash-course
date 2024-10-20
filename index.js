@@ -10,11 +10,26 @@ const resolvers = {
     games() {
       return db.games
     },
+    game(parent, args, context) {
+      return db.games.find((game) => {
+        return game.id === args.id;
+      });
+    },
     reviews() {
       return db.reviews
     },
+    review(parent, args, context) {
+      return db.reviews.find((review) => {
+        return review.id === args.id;
+      });
+    },
     authors() {
       return db.authors
+    },
+    author(parent, args, context) {
+      return db.authors.find((author) => {
+        return author.id === args.id;
+      });
     }
   }
 }
