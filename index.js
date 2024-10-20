@@ -58,6 +58,13 @@ const resolvers = {
       })
     },
   },
+  Mutation: {
+    deleteGame(parent, args, context) {
+      return db.games.filter((game)=>{
+        return !(game.id === args.id)
+      })
+    }
+  }
 };
 
 
