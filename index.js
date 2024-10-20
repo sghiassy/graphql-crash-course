@@ -71,6 +71,20 @@ const resolvers = {
       return db.games.filter((game)=>{
         return !(game.id === args.id)
       })
+    },
+    updateGame(parent, args, context) {
+      // Update the game
+      db.games = db.games.map((game)=>{
+        if (game.id === args.id) {
+          return {...game, ...args.edits}
+        }
+        return game
+      })
+
+      // Return back the updated game
+      return db.games.find((game)=>{
+        return game.id === args.id
+      })
     }
   }
 };
